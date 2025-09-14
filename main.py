@@ -12,8 +12,11 @@ class MainWindow(QMainWindow):
         self.checkbox_label = QLabel("Checkboxes:")
         self.layout.addWidget(self.checkbox_label)
 
+        self.checkbox_layout = QVBoxLayout()
+        self.layout.addLayout(self.checkbox_layout)
+
         self.checkbox = QCheckBox("First checkbox")
-        self.layout.addWidget(self.checkbox)
+        self.checkbox_layout.addWidget(self.checkbox)
 
         self.add_checkbox_button = QPushButton("Add")
         self.add_checkbox_button.clicked.connect(self.add_checkbox)
@@ -27,7 +30,7 @@ class MainWindow(QMainWindow):
 
     def add_checkbox(self):
         cb = QCheckBox("Another checkbox")
-        self.layout.addWidget(cb)
+        self.checkbox_layout.addWidget(cb)
 
 if __name__ == "__main__":
     import sys
