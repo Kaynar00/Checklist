@@ -31,5 +31,6 @@ jobs:
         # Change this if your Django package lives elsewhere (e.g., "./src")
         PYTHONPATH: .
       run: |
+        python -m pip install django
         python -m django test
     
