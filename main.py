@@ -1,5 +1,4 @@
-from PySide6.QtGui import Qt
-from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox, QLabel, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox, QLabel, QVBoxLayout, QWidget, QPushButton
 
 
 class MainWindow(QMainWindow):
@@ -16,11 +15,18 @@ class MainWindow(QMainWindow):
         self.checkbox = QCheckBox("First checkbox")
         self.layout.addWidget(self.checkbox)
 
+        self.add_checkbox_button = QPushButton("Add")
+        self.add_checkbox_button.clicked.connect(self.add_checkbox)
+        self.layout.addWidget(self.add_checkbox_button)
+
         self.container = QWidget()
         self.container.setLayout(self.layout)
         self.setCentralWidget(self.container)
 
         self.show()
+
+    def add_checkbox(self):
+        pass
 
 if __name__ == "__main__":
     import sys
