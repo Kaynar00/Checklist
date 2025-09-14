@@ -26,7 +26,8 @@ class MainWindow(QMainWindow):
         self.show()
 
     def add_checkbox(self):
-        pass
+        cb = QCheckBox("Another checkbox")
+        self.layout.addWidget(cb)
 
 if __name__ == "__main__":
     import sys
