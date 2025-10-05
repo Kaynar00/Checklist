@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
     def add_checkbox(self):
         dlg = AddCheckboxDialog(self)
         dlg.exec()
-        cb = QCheckBox("Another checkbox")
+        cb = QCheckBox(dlg.label_line_edit.text())
         self.checkbox_layout.addWidget(cb)
 
 if __name__ == "__main__":
