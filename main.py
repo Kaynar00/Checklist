@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox, QLabel, QVBoxLayout, QWidget, QPushButton
+from add_checkbox_dialog import AddCheckboxDialog
 
 
 class MainWindow(QMainWindow):
@@ -29,6 +30,8 @@ class MainWindow(QMainWindow):
         self.show()
 
     def add_checkbox(self):
+        dlg = AddCheckboxDialog(self)
+        dlg.exec()
         cb = QCheckBox("Another checkbox")
         self.checkbox_layout.addWidget(cb)
 
