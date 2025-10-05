@@ -16,9 +16,6 @@ class MainWindow(QMainWindow):
         self.checkbox_layout = QVBoxLayout()
         self.layout.addLayout(self.checkbox_layout)
 
-        self.checkbox = QCheckBox("First checkbox")
-        self.checkbox_layout.addWidget(self.checkbox)
-
         self.add_checkbox_button = QPushButton("Add")
         self.add_checkbox_button.clicked.connect(self.add_checkbox)
         self.layout.addWidget(self.add_checkbox_button)
