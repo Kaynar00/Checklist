@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox, QLabel, QVBoxLayout, QWidget, QPushButton
+from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox, QLabel, QVBoxLayout, QWidget, QPushButton, QDialog
+from add_checkbox_dialog import AddCheckboxDialog
 
 
 class MainWindow(QMainWindow):
@@ -15,12 +16,12 @@ class MainWindow(QMainWindow):
         self.checkbox_layout = QVBoxLayout()
         self.layout.addLayout(self.checkbox_layout)
 
-        self.checkbox = QCheckBox("First checkbox")
-        self.checkbox_layout.addWidget(self.checkbox)
-
         self.add_checkbox_button = QPushButton("Add")
         self.add_checkbox_button.clicked.connect(self.add_checkbox)
         self.layout.addWidget(self.add_checkbox_button)
+
+        # Push any extra vertical space to the bottom of the window
+        self.layout.addStretch(1)
 
         self.container = QWidget()
         self.container.setLayout(self.layout)
@@ -29,8 +30,11 @@ class MainWindow(QMainWindow):
         self.show()
 
     def add_checkbox(self):
-        cb = QCheckBox("Another checkbox")
-        self.checkbox_layout.addWidget(cb)
+        dlg = AddCheckboxDialog(self)
+        dlg.exec()
+        cb = QCheckBox(dlg.label_line_edit.text())
+        if dlg.result() == QDialog.Accepted:
+            self.checkbox_layout.addWidget(cb)
 
 if __name__ == "__main__":
     import sys
