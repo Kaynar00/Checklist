@@ -20,6 +20,9 @@ class MainWindow(QMainWindow):
         self.add_checkbox_button.clicked.connect(self.add_checkbox)
         self.layout.addWidget(self.add_checkbox_button)
 
+        # Push any extra vertical space to the bottom of the window
+        self.layout.addStretch(1)
+
         self.container = QWidget()
         self.container.setLayout(self.layout)
         self.setCentralWidget(self.container)
