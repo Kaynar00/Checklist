@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox, QLabel, QVBoxLayout, QWidget, QPushButton
+from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox, QLabel, QVBoxLayout, QWidget, QPushButton, QDialog
 from add_checkbox_dialog import AddCheckboxDialog
 
 
@@ -33,7 +33,8 @@ class MainWindow(QMainWindow):
         dlg = AddCheckboxDialog(self)
         dlg.exec()
         cb = QCheckBox(dlg.label_line_edit.text())
-        self.checkbox_layout.addWidget(cb)
+        if dlg.result() == QDialog.Accepted:
+            self.checkbox_layout.addWidget(cb)
 
 if __name__ == "__main__":
     import sys
