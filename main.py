@@ -41,7 +41,12 @@ class MainWindow(QMainWindow):
             self.checkbox_layout.addWidget(cb)
 
     def clear_checked_boxes(self):
-        pass
+        for i in reversed(range(self.checkbox_layout.count())):
+            item = self.checkbox_layout.itemAt(i)
+            w = item.widget()
+            if isinstance(w, QCheckBox) and w.isChecked():
+                self.checkbox_layout.takeAt(i)
+                w.deleteLater()
 
 if __name__ == "__main__":
     import sys
