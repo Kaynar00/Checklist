@@ -20,6 +20,10 @@ class MainWindow(QMainWindow):
         self.add_checkbox_button.clicked.connect(self.add_checkbox)
         self.layout.addWidget(self.add_checkbox_button)
 
+        self.clear_checked_boxes_button = QPushButton("Clear Checked")
+        self.clear_checked_boxes_button.clicked.connect(self.clear_checked_boxes)
+        self.layout.addWidget(self.clear_checked_boxes_button)
+
         # Push any extra vertical space to the bottom of the window
         self.layout.addStretch(1)
 
@@ -35,6 +39,9 @@ class MainWindow(QMainWindow):
         cb = QCheckBox(dlg.label_line_edit.text())
         if dlg.result() == QDialog.Accepted:
             self.checkbox_layout.addWidget(cb)
+
+    def clear_checked_boxes(self):
+        pass
 
 if __name__ == "__main__":
     import sys
