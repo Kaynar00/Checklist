@@ -1,4 +1,7 @@
-from PySide6.QtWidgets import QDialog, QLineEdit, QVBoxLayout, QPushButton, QHBoxLayout
+import json
+import os
+
+from PySide6.QtWidgets import QDialog, QLineEdit, QVBoxLayout, QPushButton, QHBoxLayout, QCheckBox
 
 
 class SaveDialog(QDialog):
@@ -27,7 +30,22 @@ class SaveDialog(QDialog):
         self.layout.addLayout(self.button_layout)
 
     def save_file(self):
-        pass
+        checkboxes = []
+        # Access the parent MainWindow's checkbox_layout
+        for i in range(self.parent().checkbox_layout.count()):
+            item = self.parent().checkbox_layout.itemAt(i)
+            widget = item.widget()
+            if isinstance(widget, QCheckBox):
+                checkboxes.append(widget.text())
+
+        # Create a saves directory if it doesn't exist
+        os.makedirs("saves", exist_ok=True)
+
+        checklists = {self.save_file_line_edit.text(): checkboxes}
+        with open("saves/" + self.save_file_line_edit.text() + ".json", "w") as f:
+            json.dump(checklists, f, indent=4)
+
+        self.close()
 
     def cancel(self):
         self.close()
