@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox, QLabel, QVBoxLayout, QWidget, QPushButton, QDialog
 from add_checkbox_dialog import AddCheckboxDialog
+from save_dialog import SaveDialog
 
 
 class MainWindow(QMainWindow):
@@ -24,6 +25,10 @@ class MainWindow(QMainWindow):
         self.clear_checked_boxes_button.clicked.connect(self.clear_checked_boxes)
         self.layout.addWidget(self.clear_checked_boxes_button)
 
+        self.save_button = QPushButton("Save")
+        self.save_button.clicked.connect(self.save_checklist)
+        self.layout.addWidget(self.save_button)
+
         # Push any extra vertical space to the bottom of the window
         self.layout.addStretch(1)
 
@@ -47,6 +52,10 @@ class MainWindow(QMainWindow):
             if isinstance(w, QCheckBox) and w.isChecked():
                 self.checkbox_layout.takeAt(i)
                 w.deleteLater()
+
+    def save_checklist(self):
+        dlg = SaveDialog(self)
+        dlg.exec()
 
 if __name__ == "__main__":
     import sys
