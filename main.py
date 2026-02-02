@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox, QLabel, QVBoxLayout, QWidget, QPushButton, QDialog
 from add_checkbox_dialog import AddCheckboxDialog
+from load_dialog import LoadDialog
 from save_dialog import SaveDialog
 
 
@@ -42,9 +43,6 @@ class MainWindow(QMainWindow):
 
         self.show()
 
-    def load_checklist(self):
-        pass
-
     def add_checkbox(self):
         dlg = AddCheckboxDialog(self)
         dlg.exec()
@@ -62,6 +60,10 @@ class MainWindow(QMainWindow):
 
     def save_checklist(self):
         dlg = SaveDialog(self)
+        dlg.exec()
+
+    def load_checklist(self):
+        dlg = LoadDialog(self)
         dlg.exec()
 
 if __name__ == "__main__":
