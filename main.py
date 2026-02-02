@@ -29,6 +29,10 @@ class MainWindow(QMainWindow):
         self.save_button.clicked.connect(self.save_checklist)
         self.layout.addWidget(self.save_button)
 
+        self.load_button = QPushButton("Load")
+        self.load_button.clicked.connect(self.load_checklist)
+        self.layout.addWidget(self.load_button)
+
         # Push any extra vertical space to the bottom of the window
         self.layout.addStretch(1)
 
@@ -37,6 +41,9 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.container)
 
         self.show()
+
+    def load_checklist(self):
+        pass
 
     def add_checkbox(self):
         dlg = AddCheckboxDialog(self)
